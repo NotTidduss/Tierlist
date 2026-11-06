@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://q2gbjafmwj2k"]
+
+[ext_resource type="Texture2D" uid="uid://fuyj7ov8ttqd" path="res://textures/ui/controls_bg.png" id="1_hs23u"]
+[ext_resource type="Script" uid="uid://muv6ijkdyii2" path="res://scripts/ui/ControlsPanel.cs" id="2_5kyde"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mhnvy"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rdb2x"]
+texture = ExtResource("1_hs23u")
+texture_margin_left = 10.0
+texture_margin_top = 2.0
+texture_margin_right = 10.0
+texture_margin_bottom = 2.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.39215687, 0.39215687, 0.39215687, 0.78431374)
+
+[node name="ControlsPanel" type="PanelContainer" unique_id=1969134350]
+custom_minimum_size = Vector2(400, 0)
+custom_maximum_size = Vector2(400, 400)
+offset_right = 400.0
+offset_bottom = 387.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_mhnvy")
+script = ExtResource("2_5kyde")
+
+[node name="ControlLabels" type="VBoxContainer" parent="." unique_id=1668656142]
+layout_mode = 2
+
+[node name="LabelTitle" type="Label" parent="ControlLabels" unique_id=1535166698]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8819366, 0.8819366, 0.88193655, 1)
+theme_override_colors/font_outline_color = Color(0.019607844, 0.019607844, 0.019607844, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxTexture_rdb2x")
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="ControlLabels" unique_id=76483552]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="LabelControls" type="Label" parent="ControlLabels" unique_id=883243909]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.8819366, 0.8819366, 0.88193655, 1)
+theme_override_colors/font_outline_color = Color(0.0010747596, 0.13864529, 0.5779297, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_rdb2x")
+text = "Hide / Show Controls: CTRL + I
+Grab Data / Tier: LEFT CLICK
+Undo Grab: RIGHT CLICK
+Delete grabbed: ESCAPE
+Select Data: RIGHT CLICK
+Deselect Data: ESCAPE
+Add Tier at Top: ARROW UP
+Add Tier at Bottom: ARROW DOWN
+Quick Save Project: CTRL + S
+Apply SABCDE Theme: F1
+Apply 012345 Theme: F2"
+horizontal_alignment = 2
+vertical_alignment = 1

@@ -1,0 +1,195 @@
+[gd_scene format=3 uid="uid://bjx63xnary4qh"]
+
+[ext_resource type="Script" uid="uid://djbcshh0oqxem" path="res://scripts/ui/MenuPanel.cs" id="1_4f3de"]
+[ext_resource type="Texture2D" uid="uid://bmg4ek1jg35cl" path="res://textures/ui/button_bg.png" id="1_nsoy7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nsoy7"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tds3f"]
+texture = ExtResource("1_nsoy7")
+modulate_color = Color(0.8217887, 0.82178867, 0.82178867, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jbj1t"]
+texture = ExtResource("1_nsoy7")
+modulate_color = Color(0.66656834, 0.6665689, 0.66656864, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jkv2x"]
+texture = ExtResource("1_nsoy7")
+modulate_color = Color(0.9428228, 0.94282264, 0.94282264, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_muem4"]
+texture = ExtResource("1_nsoy7")
+modulate_color = Color(0.22745098, 0.10980392, 0, 0.50980395)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_tds3f"]
+color = Color(1, 1, 1, 1)
+grow_begin = -40.0
+grow_end = -40.0
+thickness = 3
+
+[node name="MenuPanel" type="PanelContainer" unique_id=889298836 node_paths=PackedStringArray("deleteTierlistButton", "saveTierlistButton", "loadTierlistButton", "createDataButton", "loadDataButton")]
+offset_right = 280.0
+offset_bottom = 400.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nsoy7")
+script = ExtResource("1_4f3de")
+deleteTierlistButton = NodePath("MenuSections/SectionTierlist/Buttons/ButtonDelete")
+saveTierlistButton = NodePath("MenuSections/SectionTierlist/Buttons/ButtonSaveTierlist")
+loadTierlistButton = NodePath("MenuSections/SectionTierlist/Buttons/ButtonLoadTierlist")
+createDataButton = NodePath("MenuSections/SectionData/Buttons/ButtonCreateData")
+loadDataButton = NodePath("MenuSections/SectionData/Buttons/ButtonLoadData")
+
+[node name="MenuSections" type="VBoxContainer" parent="." unique_id=549427566]
+layout_mode = 2
+
+[node name="SectionFile" type="CenterContainer" parent="MenuSections" unique_id=516068909]
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="MenuSections/SectionFile" unique_id=914120451]
+layout_mode = 2
+
+[node name="ButtonSave" type="Button" parent="MenuSections/SectionFile/Buttons" unique_id=231679243]
+custom_minimum_size = Vector2(240, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95169574, 0.9192572, 0.8939731, 1)
+theme_override_colors/font_focus_color = Color(0.7292606, 0.6281762, 0.51903117, 1)
+theme_override_colors/font_pressed_color = Color(0.9752254, 0.601718, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.52156866, 0.52156866, 0.52156866, 0.7058824)
+theme_override_colors/font_outline_color = Color(0.16138026, 0.12091876, 1.2032688e-08, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxTexture_tds3f")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jbj1t")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jkv2x")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_muem4")
+text = "Save File"
+
+[node name="ButtonLoad" type="Button" parent="MenuSections/SectionFile/Buttons" unique_id=2137774316]
+custom_minimum_size = Vector2(240, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95169574, 0.9192572, 0.8939731, 1)
+theme_override_colors/font_focus_color = Color(0.7292606, 0.6281762, 0.51903117, 1)
+theme_override_colors/font_pressed_color = Color(0.9752254, 0.601718, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.52156866, 0.52156866, 0.52156866, 0.7058824)
+theme_override_colors/font_outline_color = Color(0.16138026, 0.12091876, 1.2032688e-08, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxTexture_tds3f")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jbj1t")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jkv2x")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_muem4")
+text = "Load File"
+
+[node name="HSeparator" type="HSeparator" parent="MenuSections" unique_id=1800886687]
+layout_mode = 2
+theme_override_constants/separation = 24
+theme_override_styles/separator = SubResource("StyleBoxLine_tds3f")
+
+[node name="SectionTierlist" type="CenterContainer" parent="MenuSections" unique_id=2046464203]
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="MenuSections/SectionTierlist" unique_id=1570644422]
+layout_mode = 2
+
+[node name="ButtonDelete" type="Button" parent="MenuSections/SectionTierlist/Buttons" unique_id=1347152146]
+custom_minimum_size = Vector2(240, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95169574, 0.9192572, 0.8939731, 1)
+theme_override_colors/font_focus_color = Color(0.7292606, 0.6281762, 0.51903117, 1)
+theme_override_colors/font_pressed_color = Color(0.9752254, 0.601718, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.52156866, 0.52156866, 0.52156866, 0.7058824)
+theme_override_colors/font_outline_color = Color(0.16138026, 0.12091876, 1.2032688e-08, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxTexture_tds3f")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jbj1t")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jkv2x")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_muem4")
+disabled = true
+text = "Delete Tierlist"
+
+[node name="ButtonSaveTierlist" type="Button" parent="MenuSections/SectionTierlist/Buttons" unique_id=1600427807]
+custom_minimum_size = Vector2(240, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95169574, 0.9192572, 0.8939731, 1)
+theme_override_colors/font_focus_color = Color(0.7292606, 0.6281762, 0.51903117, 1)
+theme_override_colors/font_pressed_color = Color(0.9752254, 0.601718, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.52156866, 0.52156866, 0.52156866, 0.7058824)
+theme_override_colors/font_outline_color = Color(0.16138026, 0.12091876, 1.2032688e-08, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxTexture_tds3f")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jbj1t")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jkv2x")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_muem4")
+text = "Save Tierlist"
+
+[node name="ButtonLoadTierlist" type="Button" parent="MenuSections/SectionTierlist/Buttons" unique_id=577696567]
+custom_minimum_size = Vector2(240, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95169574, 0.9192572, 0.8939731, 1)
+theme_override_colors/font_focus_color = Color(0.7292606, 0.6281762, 0.51903117, 1)
+theme_override_colors/font_pressed_color = Color(0.9752254, 0.601718, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.52156866, 0.52156866, 0.52156866, 0.7058824)
+theme_override_colors/font_outline_color = Color(0.16138026, 0.12091876, 1.2032688e-08, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxTexture_tds3f")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jbj1t")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jkv2x")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_muem4")
+text = "Load Tierlist"
+
+[node name="HSeparator2" type="HSeparator" parent="MenuSections" unique_id=550987205]
+layout_mode = 2
+theme_override_constants/separation = 24
+theme_override_styles/separator = SubResource("StyleBoxLine_tds3f")
+
+[node name="SectionData" type="CenterContainer" parent="MenuSections" unique_id=1788424386]
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="MenuSections/SectionData" unique_id=2114906726]
+layout_mode = 2
+
+[node name="ButtonCreateData" type="Button" parent="MenuSections/SectionData/Buttons" unique_id=1140792693]
+custom_minimum_size = Vector2(240, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95169574, 0.9192572, 0.8939731, 1)
+theme_override_colors/font_focus_color = Color(0.7292606, 0.6281762, 0.51903117, 1)
+theme_override_colors/font_pressed_color = Color(0.9752254, 0.601718, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.52156866, 0.52156866, 0.52156866, 0.7058824)
+theme_override_colors/font_outline_color = Color(0.16138026, 0.12091876, 1.2032688e-08, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxTexture_tds3f")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jbj1t")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jkv2x")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_muem4")
+text = "Create Data"
+
+[node name="ButtonLoadData" type="Button" parent="MenuSections/SectionData/Buttons" unique_id=1526287586]
+custom_minimum_size = Vector2(240, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95169574, 0.9192572, 0.8939731, 1)
+theme_override_colors/font_focus_color = Color(0.7292606, 0.6281762, 0.51903117, 1)
+theme_override_colors/font_pressed_color = Color(0.9752254, 0.601718, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.52156866, 0.52156866, 0.52156866, 0.7058824)
+theme_override_colors/font_outline_color = Color(0.16138026, 0.12091876, 1.2032688e-08, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxTexture_tds3f")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jbj1t")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jkv2x")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_muem4")
+text = "Load Data"
+
+[connection signal="pressed" from="MenuSections/SectionFile/Buttons/ButtonSave" to="." method="OnPressed_SaveFile"]
+[connection signal="pressed" from="MenuSections/SectionFile/Buttons/ButtonLoad" to="." method="OnPressed_LoadFile"]
+[connection signal="pressed" from="MenuSections/SectionTierlist/Buttons/ButtonDelete" to="." method="OnPressed_DeleteTierlist"]
+[connection signal="pressed" from="MenuSections/SectionTierlist/Buttons/ButtonSaveTierlist" to="." method="OnPressed_SaveTierlist"]
+[connection signal="pressed" from="MenuSections/SectionTierlist/Buttons/ButtonLoadTierlist" to="." method="OnPressed_LoadTierlist"]
+[connection signal="pressed" from="MenuSections/SectionData/Buttons/ButtonCreateData" to="." method="OnPressed_CreateData"]
+[connection signal="pressed" from="MenuSections/SectionData/Buttons/ButtonLoadData" to="." method="OnPressed_LoadData"]

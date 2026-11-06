@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dp1up44kb0v7w"]
+
+[ext_resource type="Script" uid="uid://dmtkvxqmyhss6" path="res://scripts/ui/Tierable.cs" id="1_q5nfd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_av2pg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdb2x"]
+content_margin_left = 5.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.74509805, 0.74509805, 0.74509805, 0.6627451)
+border_width_left = 1
+border_width_top = 1
+border_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
+
+[node name="Tierable" type="PanelContainer" unique_id=920664798 node_paths=PackedStringArray("textureRect", "originLabel")]
+custom_minimum_size = Vector2(96, 96)
+custom_maximum_size = Vector2(96, 96)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_av2pg")
+script = ExtResource("1_q5nfd")
+textureRect = NodePath("TierableTexture")
+originLabel = NodePath("OriginLabel")
+
+[node name="TierableTexture" type="TextureRect" parent="." unique_id=832078895]
+custom_minimum_size = Vector2(96, 96)
+custom_maximum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="OriginLabel" type="Label" parent="." unique_id=1338683286]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.07683601, 0.076835774, 0.076835655, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_rdb2x")
+horizontal_alignment = 2
+
+[connection signal="gui_input" from="." to="." method="OnGuiInput_Tierable"]

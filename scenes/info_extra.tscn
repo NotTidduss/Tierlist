@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://uu5c8u6lr3u8"]
+
+[ext_resource type="Script" uid="uid://b477qw2raoh0m" path="res://scripts/ui/InfoExtra.cs" id="1_v2hiy"]
+
+[node name="InfoExtra" type="TextureRect" unique_id=702561219]
+custom_maximum_size = Vector2(120, 120)
+size_flags_horizontal = 3
+expand_mode = 4
+script = ExtResource("1_v2hiy")
+
+[connection signal="gui_input" from="." to="." method="OnGuiInput"]

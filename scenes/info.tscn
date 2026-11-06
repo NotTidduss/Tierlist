@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://m1gsot8fim8t"]
+
+[ext_resource type="Texture2D" uid="uid://jteavnqawidr" path="res://textures/ui/tierlist_info.png" id="1_c0okb"]
+[ext_resource type="Script" uid="uid://d1u1w46ydtrn8" path="res://scripts/ui/Info.cs" id="1_mxpga"]
+[ext_resource type="Texture2D" uid="uid://bnb5h3xkv81b3" path="res://textures/tierable/default_0.png" id="2_kin2u"]
+[ext_resource type="PackedScene" uid="uid://fki00ryko6qf" path="res://scenes/info_image_input.tscn" id="2_ktb4k"]
+[ext_resource type="Texture2D" uid="uid://bmg4ek1jg35cl" path="res://textures/ui/button_bg.png" id="4_hoc62"]
+[ext_resource type="Texture2D" uid="uid://doypnvr3f6c1h" path="res://textures/icon/save_icon.png" id="5_c0okb"]
+[ext_resource type="Texture2D" uid="uid://o4f518bjjt53" path="res://textures/icon/close_icon.png" id="6_hsacm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tds3f"]
+texture = ExtResource("1_c0okb")
+texture_margin_left = 20.0
+texture_margin_top = 30.0
+texture_margin_right = 20.0
+texture_margin_bottom = 30.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rdb2x"]
+texture = ExtResource("4_hoc62")
+modulate_color = Color(0, 0.7058824, 0.8627451, 0.5882353)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c0okb"]
+texture = ExtResource("4_hoc62")
+modulate_color = Color(0, 0.25490198, 0.3137255, 0.74509805)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hsacm"]
+texture = ExtResource("4_hoc62")
+modulate_color = Color(0, 0.8235294, 0.8039216, 0.7058824)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hoc62"]
+texture = ExtResource("4_hoc62")
+modulate_color = Color(0.78431374, 0.11764706, 0, 0.7058824)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l3cto"]
+texture = ExtResource("4_hoc62")
+modulate_color = Color(0.3137255, 0.078431375, 0, 0.78431374)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_av2pg"]
+texture = ExtResource("4_hoc62")
+modulate_color = Color(0.9607843, 0.3529412, 0.19607843, 0.74509805)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p8h45"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+
+[node name="Info" type="PanelContainer" unique_id=562345506 node_paths=PackedStringArray("title", "mainImage", "mainImageInput", "description", "extraImageContainer", "extraImageInput")]
+custom_minimum_size = Vector2(400, 900)
+custom_maximum_size = Vector2(400, 900)
+offset_right = 400.0
+offset_bottom = 900.0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_tds3f")
+script = ExtResource("1_mxpga")
+title = NodePath("InfoElements/TitleBar/LineEditTitle")
+mainImage = NodePath("InfoElements/TextureRectMain")
+mainImageInput = NodePath("InfoElements/InfoImageInputMain")
+description = NodePath("InfoElements/TextEditDescription")
+extraImageContainer = NodePath("InfoElements/InfoExtraTextures")
+extraImageInput = NodePath("InfoElements/InfoImageInputExtra")
+
+[node name="InfoElements" type="VBoxContainer" parent="." unique_id=466542447]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="TitleBar" type="HBoxContainer" parent="InfoElements" unique_id=1227498171]
+layout_mode = 2
+alignment = 2
+
+[node name="LineEditTitle" type="LineEdit" parent="InfoElements/TitleBar" unique_id=2011271138]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.099985756, 0.09998611, 0.099985875, 1)
+theme_override_colors/font_uneditable_color = Color(0.23392498, 0.23392567, 0.23392522, 0.5019608)
+theme_override_colors/font_selected_color = Color(0.7539839, 0.75398386, 0.75398386, 1)
+theme_override_colors/font_placeholder_color = Color(0.11858118, 0.118581496, 0.11858127, 0.6)
+theme_override_colors/caret_color = Color(0.35156253, 0.35156295, 0.3515636, 1)
+theme_override_font_sizes/font_size = 22
+placeholder_text = "Enter Title here..."
+flat = true
+
+[node name="ButtonSave" type="Button" parent="InfoElements/TitleBar" unique_id=1371374160]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_rdb2x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_c0okb")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hsacm")
+icon = ExtResource("5_c0okb")
+
+[node name="ButtonClose" type="Button" parent="InfoElements/TitleBar" unique_id=1174639701]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_hoc62")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_l3cto")
+theme_override_styles/hover = SubResource("StyleBoxTexture_av2pg")
+icon = ExtResource("6_hsacm")
+
+[node name="TextureRectMain" type="TextureRect" parent="InfoElements" unique_id=1602069143]
+custom_minimum_size = Vector2(360, 360)
+custom_maximum_size = Vector2(360, 360)
+layout_mode = 2
+texture = ExtResource("2_kin2u")
+expand_mode = 4
+
+[node name="InfoImageInputMain" parent="InfoElements" unique_id=1097908899 instance=ExtResource("2_ktb4k")]
+visible = false
+custom_minimum_size = Vector2(360, 360)
+custom_maximum_size = Vector2(360, 360)
+layout_mode = 2
+
+[node name="TextEditDescription" type="TextEdit" parent="InfoElements" unique_id=1178144195]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/caret_color = Color(0.4045106, 0.40451145, 0.40451077, 1)
+theme_override_colors/font_color = Color(0.11858118, 0.118581496, 0.11858127, 1)
+theme_override_colors/font_placeholder_color = Color(0.13682553, 0.13682589, 0.13682556, 0.6)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p8h45")
+placeholder_text = "Enter description here..."
+wrap_mode = 1
+
+[node name="InfoExtraTextures" type="HBoxContainer" parent="InfoElements" unique_id=1092062]
+custom_maximum_size = Vector2(-1, 120)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="InfoImageInputExtra" parent="InfoElements" unique_id=181354579 instance=ExtResource("2_ktb4k")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[connection signal="mouse_exited" from="InfoElements/TitleBar/LineEditTitle" to="." method="OnMouseExited_Title"]
+[connection signal="pressed" from="InfoElements/TitleBar/ButtonSave" to="." method="OnPressed_Save"]
+[connection signal="pressed" from="InfoElements/TitleBar/ButtonClose" to="." method="OnPressed_Close"]
+[connection signal="gui_input" from="InfoElements/TextureRectMain" to="." method="OnGuiInput_MainImage"]
+[connection signal="OnInputPressed_" from="InfoElements/InfoImageInputMain" to="." method="OnInputPressed_MainImageInput"]
+[connection signal="mouse_exited" from="InfoElements/TextEditDescription" to="." method="OnMouseExited_Description"]
+[connection signal="OnInputPressed_" from="InfoElements/InfoImageInputExtra" to="." method="OnInputPressed_ExtraImageInput"]

@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://dft2j3r8um83p"]
+
+[ext_resource type="Script" uid="uid://ds2h1m8wdxr1v" path="res://scripts/core/Tree.cs" id="1_1bvp3"]
+[ext_resource type="Script" uid="uid://du7m74065ry6g" path="res://scripts/core/Packs.cs" id="1_272bh"]
+[ext_resource type="Script" uid="uid://7lsk1hhkdd8q" path="res://scripts/core/UI.cs" id="2_7mycd"]
+[ext_resource type="PackedScene" uid="uid://8mf24gk3fvsb" path="res://scenes/tier.tscn" id="3_5vw27"]
+[ext_resource type="PackedScene" uid="uid://d0qrny2dkmkhf" path="res://scenes/tier_container.tscn" id="3_85g3d"]
+[ext_resource type="PackedScene" uid="uid://dp1up44kb0v7w" path="res://scenes/tierable.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://uu5c8u6lr3u8" path="res://scenes/info_extra.tscn" id="6_muem4"]
+[ext_resource type="Texture2D" uid="uid://sy6w60tfsg0j" path="res://textures/ui/tierlist_bg.png" id="7_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://e277rljsjmak" path="res://scenes/tierlist_panel.tscn" id="9_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://5t8lqjplaskh" path="res://scenes/tabs.tscn" id="10_trceg"]
+[ext_resource type="PackedScene" uid="uid://ccxxr6ph5vntk" path="res://scenes/menu.tscn" id="14_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://m1gsot8fim8t" path="res://scenes/info.tscn" id="14_jbj1t"]
+[ext_resource type="Script" uid="uid://c7qhd6qpkuua6" path="res://scripts/core/Filer.cs" id="15_jkv2x"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_trceg"]
+texture = ExtResource("7_ya4ey")
+
+[node name="Main" type="Node" unique_id=2061037280]
+
+[node name="Packs" type="Node" parent="." unique_id=2031623488]
+script = ExtResource("1_272bh")
+packedTierable = ExtResource("3_h2yge")
+packedTierContainer = ExtResource("3_85g3d")
+packedTier = ExtResource("3_5vw27")
+packedTierlistPanel = ExtResource("9_ya4ey")
+packedInfoExtra = ExtResource("6_muem4")
+
+[node name="Tree" type="Node" parent="." unique_id=1115385507 node_paths=PackedStringArray("packs", "ui", "tabs", "menu", "info", "filer", "grabbedTierable", "grabbedTier")]
+script = ExtResource("1_1bvp3")
+packs = NodePath("../Packs")
+ui = NodePath("../UI/MainUI")
+tabs = NodePath("../UI/MainUI/MainPanel/HBoxContainer/Tabs")
+menu = NodePath("../UI/MainUI/MainPanel/HBoxContainer/Menu")
+info = NodePath("../UI/MainUI/MainPanel/HBoxContainer/Info")
+filer = NodePath("../Filer")
+grabbedTierable = NodePath("../UI/MainUI/GrabbedTierable")
+grabbedTier = NodePath("../UI/MainUI/GrabbedTier")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=306542640]
+
+[node name="MainUI" type="Control" parent="UI" unique_id=561344171]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_7mycd")
+
+[node name="MainPanel" type="PanelContainer" parent="UI/MainUI" unique_id=220517540]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 837.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_trceg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MainUI/MainPanel" unique_id=1060236554]
+layout_mode = 2
+
+[node name="Tabs" parent="UI/MainUI/MainPanel/HBoxContainer" unique_id=464255609 instance=ExtResource("10_trceg")]
+layout_mode = 2
+
+[node name="Info" parent="UI/MainUI/MainPanel/HBoxContainer" unique_id=236284364 instance=ExtResource("14_jbj1t")]
+visible = false
+layout_mode = 2
+
+[node name="Menu" parent="UI/MainUI/MainPanel/HBoxContainer" unique_id=226724339 instance=ExtResource("14_a8y0u")]
+layout_mode = 2
+
+[node name="GrabbedTierable" parent="UI/MainUI" unique_id=1068602692 instance=ExtResource("3_h2yge")]
+visible = false
+z_index = 3
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+
+[node name="GrabbedTier" parent="UI/MainUI" unique_id=1352867815 instance=ExtResource("3_5vw27")]
+visible = false
+layout_mode = 0
+offset_right = 135.0
+offset_bottom = 104.0
+
+[node name="Filer" type="FileDialog" parent="." unique_id=596528621]
+oversampling_override = 1.0
+access = 1
+script = ExtResource("15_jkv2x")
+
+[connection signal="canceled" from="Filer" to="Filer" method="OnCanceled"]
+[connection signal="file_selected" from="Filer" to="Filer" method="OnFileSelected"]

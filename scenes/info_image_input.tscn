@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://fki00ryko6qf"]
+
+[ext_resource type="Texture2D" uid="uid://c7s516jagj57k" path="res://textures/icon/plus_icon.png" id="1_jq2bj"]
+[ext_resource type="Script" uid="uid://e5vnxl0vlgyp" path="res://scripts/ui/InfoImageInput.cs" id="1_ss17f"]
+
+[node name="InfoImageInput" type="HBoxContainer" unique_id=1097908899 node_paths=PackedStringArray("input")]
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("1_ss17f")
+input = NodePath("LineEditInput")
+
+[node name="LineEditInput" type="LineEdit" parent="." unique_id=1110941572]
+custom_minimum_size = Vector2(0, 50)
+custom_maximum_size = Vector2(-1, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+placeholder_text = "Paste image link or path..."
+
+[node name="ButtonAdd" type="Button" parent="." unique_id=1920458209]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+tooltip_text = "Add new extra image from path or link entered below."
+icon = ExtResource("1_jq2bj")
+icon_alignment = 1
+
+[connection signal="mouse_exited" from="LineEditInput" to="." method="OnMouseExited_Input"]
+[connection signal="pressed" from="ButtonAdd" to="." method="OnPressed"]

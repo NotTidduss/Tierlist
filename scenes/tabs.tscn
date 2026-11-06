@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://5t8lqjplaskh"]
+
+[ext_resource type="Texture2D" uid="uid://c7s516jagj57k" path="res://textures/icon/plus_icon.png" id="1_0apld"]
+[ext_resource type="Script" uid="uid://cnvkmjkvkqpp0" path="res://scripts/ui/Tabs.cs" id="2_elqjv"]
+[ext_resource type="PackedScene" uid="uid://e277rljsjmak" path="res://scenes/tierlist_panel.tscn" id="3_j0ta3"]
+[ext_resource type="Script" uid="uid://bqxfo0e3coayp" path="res://scripts/ui/AllTierlistPanel.cs" id="4_y6cvq"]
+[ext_resource type="Script" uid="uid://cv2ksqgoyjqk" path="res://scripts/ui/Tierlist.cs" id="5_y8q7g"]
+[ext_resource type="Script" uid="uid://b1qeob7qdn0kh" path="res://scripts/scaffold/TierableContainer.cs" id="6_w2tqf"]
+[ext_resource type="Texture2D" uid="uid://sy6w60tfsg0j" path="res://textures/ui/tierlist_bg.png" id="7_3f1e3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x2xk0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eb6dy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tds3f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ulwi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3o2m1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_30cwo"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_lquwl"]
+thickness = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yc10j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gqmmt"]
+texture = ExtResource("7_3f1e3")
+texture_margin_left = 20.0
+texture_margin_top = 10.0
+texture_margin_right = 20.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ld40"]
+texture = ExtResource("7_3f1e3")
+texture_margin_left = 20.0
+texture_margin_top = 30.0
+texture_margin_right = 20.0
+texture_margin_bottom = 30.0
+modulate_color = Color(0.3137255, 0.3137255, 0.3137255, 1)
+
+[node name="Tabs" type="TabContainer" unique_id=1714475923 node_paths=PackedStringArray("newTab", "allTab")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/side_margin = 2
+theme_override_constants/tab_separation = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 17
+theme_override_styles/panel = SubResource("StyleBoxEmpty_x2xk0")
+current_tab = 0
+switch_on_drag_hover = false
+tab_1/icon = ExtResource("1_0apld")
+tab_2/title = "ALL"
+tab_2/hidden = true
+script = ExtResource("2_elqjv")
+newTab = NodePath("NewTab")
+allTab = NodePath("AllTab")
+
+[node name="TierlistPanel" parent="." unique_id=1343688448 instance=ExtResource("3_j0ta3")]
+layout_mode = 2
+
+[node name="NewTab" type="PanelContainer" parent="." unique_id=1905605551]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_eb6dy")
+metadata/_tab_index = 1
+metadata/_tab_name = ""
+
+[node name="AllTab" type="PanelContainer" parent="." unique_id=1024990393 node_paths=PackedStringArray("invalidFallback", "title", "tierlist", "pool")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tds3f")
+script = ExtResource("4_y6cvq")
+invalidFallback = NodePath("Structure/InvalidFallback")
+title = NodePath("Structure/TitleMargin/Title")
+tierlist = NodePath("Structure/TierlistMargin/Tierlist")
+pool = NodePath("Structure/MarginContainer/TierlistPool")
+metadata/_tab_index = 2
+metadata/_tab_name = "ALL"
+
+[node name="Structure" type="VBoxContainer" parent="AllTab" unique_id=790900988]
+layout_mode = 2
+
+[node name="TitleMargin" type="MarginContainer" parent="AllTab/Structure" unique_id=1646288627]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Title" type="LineEdit" parent="AllTab/Structure/TitleMargin" unique_id=747011964]
+custom_minimum_size = Vector2(0, 40)
+custom_maximum_size = Vector2(-1, 40)
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0ulwi")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_3o2m1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_30cwo")
+text = "ALL"
+
+[node name="TierlistMargin" type="MarginContainer" parent="AllTab/Structure" unique_id=1426196670]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Tierlist" type="VBoxContainer" parent="AllTab/Structure/TierlistMargin" unique_id=255863374]
+layout_mode = 2
+alignment = 1
+script = ExtResource("5_y8q7g")
+
+[node name="HSeparator" type="HSeparator" parent="AllTab/Structure" unique_id=1499070616]
+visible = false
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_lquwl")
+
+[node name="MarginContainer" type="MarginContainer" parent="AllTab/Structure" unique_id=448918560]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TierlistPool" type="GridContainer" parent="AllTab/Structure/MarginContainer" unique_id=714212062]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 11
+script = ExtResource("6_w2tqf")
+
+[node name="InvalidFallback" type="PanelContainer" parent="AllTab/Structure" unique_id=1399025710]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yc10j")
+
+[node name="Texts" type="VBoxContainer" parent="AllTab/Structure/InvalidFallback" unique_id=394025131]
+layout_mode = 2
+
+[node name="LabelTitle" type="Label" parent="AllTab/Structure/InvalidFallback/Texts" unique_id=1425720622]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxTexture_gqmmt")
+text = "Data is invalid!"
+horizontal_alignment = 1
+
+[node name="LabelDescription" type="Label" parent="AllTab/Structure/InvalidFallback/Texts" unique_id=1791417610]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_0ld40")
+text = "Make sure the number of Tiers match in every Tierlist!"
+horizontal_alignment = 1
+
+[connection signal="tab_changed" from="." to="." method="OnTabChanged"]
+[connection signal="visibility_changed" from="NewTab" to="." method="OnVisibilityChanged_NewTab"]
+[connection signal="visibility_changed" from="AllTab" to="." method="OnVisibilityChanged_AllTab"]
+[connection signal="gui_input" from="AllTab/Structure/MarginContainer/TierlistPool" to="AllTab/Structure/MarginContainer/TierlistPool" method="OnGuiInput_TierableContainer"]

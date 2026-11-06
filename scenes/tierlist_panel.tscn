@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://e277rljsjmak"]
+
+[ext_resource type="Script" uid="uid://dq6vx62ah4xr8" path="res://scripts/ui/TierlistPanel.cs" id="1_gdtwg"]
+[ext_resource type="Script" uid="uid://cv2ksqgoyjqk" path="res://scripts/ui/Tierlist.cs" id="1_y6cjn"]
+[ext_resource type="Script" uid="uid://b1qeob7qdn0kh" path="res://scripts/scaffold/TierableContainer.cs" id="3_gdtwg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8y0u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ulwi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3o2m1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_30cwo"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_lquwl"]
+thickness = 4
+
+[node name="TierlistPanel" type="PanelContainer" unique_id=1343688448 node_paths=PackedStringArray("title", "tierlist", "pool")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1440.0
+offset_bottom = -487.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_a8y0u")
+script = ExtResource("1_gdtwg")
+title = NodePath("TierlistAndPool/TitleMargin/Title")
+tierlist = NodePath("TierlistAndPool/TierlistMargin/Tierlist")
+pool = NodePath("TierlistAndPool/MarginContainer/TierlistPool")
+metadata/_tab_index = 0
+
+[node name="TierlistAndPool" type="VBoxContainer" parent="." unique_id=1922340206]
+layout_mode = 2
+
+[node name="TitleMargin" type="MarginContainer" parent="TierlistAndPool" unique_id=999981935]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 5
+
+[node name="Title" type="LineEdit" parent="TierlistAndPool/TitleMargin" unique_id=1240779403]
+custom_minimum_size = Vector2(0, 32)
+custom_maximum_size = Vector2(-1, 32)
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0ulwi")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_3o2m1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_30cwo")
+text = "Title"
+
+[node name="TierlistMargin" type="MarginContainer" parent="TierlistAndPool" unique_id=963332685]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Tierlist" type="VBoxContainer" parent="TierlistAndPool/TierlistMargin" unique_id=1589435508]
+layout_mode = 2
+alignment = 1
+script = ExtResource("1_y6cjn")
+
+[node name="HSeparator" type="HSeparator" parent="TierlistAndPool" unique_id=1060899034]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_lquwl")
+
+[node name="MarginContainer" type="MarginContainer" parent="TierlistAndPool" unique_id=393865854]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="TierlistPool" type="GridContainer" parent="TierlistAndPool/MarginContainer" unique_id=1724439030]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+columns = 11
+script = ExtResource("3_gdtwg")
+
+[connection signal="mouse_exited" from="TierlistAndPool/TitleMargin/Title" to="." method="OnMouseExited_Title"]
+[connection signal="text_submitted" from="TierlistAndPool/TitleMargin/Title" to="." method="OnTextSubmitted_Title"]
+[connection signal="gui_input" from="TierlistAndPool/MarginContainer/TierlistPool" to="TierlistAndPool/MarginContainer/TierlistPool" method="OnGuiInput_TierableContainer"]

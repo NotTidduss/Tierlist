@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://d0qrny2dkmkhf"]
+
+[ext_resource type="Script" uid="uid://k3hv0m4fd0y3" path="res://scripts/scaffold/TierContainer.cs" id="1_r8cxh"]
+
+[node name="TierContainer" type="PanelContainer" unique_id=234564053]
+custom_minimum_size = Vector2(0, 26)
+offset_bottom = 26.0
+size_flags_horizontal = 3
+script = ExtResource("1_r8cxh")
+
+[connection signal="gui_input" from="." to="." method="OnGuiInput_TierContainer"]

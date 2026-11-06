@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ccxxr6ph5vntk"]
+
+[ext_resource type="Texture2D" uid="uid://bve3w2u41ed4d" path="res://textures/ui/tierlist_mainmenu_bg.png" id="1_con2f"]
+[ext_resource type="Script" uid="uid://caldnj5gtrli0" path="res://scripts/ui/Menu.cs" id="2_mhnvy"]
+[ext_resource type="PackedScene" uid="uid://bjx63xnary4qh" path="res://scenes/panel_menu.tscn" id="3_mhnvy"]
+[ext_resource type="PackedScene" uid="uid://q2gbjafmwj2k" path="res://scenes/panel_controls.tscn" id="4_mhnvy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qa2oc"]
+texture = ExtResource("1_con2f")
+
+[node name="Menu" type="PanelContainer" unique_id=690251710 node_paths=PackedStringArray("menuPanel", "controlsPanel")]
+custom_minimum_size = Vector2(0, 900)
+custom_maximum_size = Vector2(400, 900)
+offset_right = 400.0
+offset_bottom = 900.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_qa2oc")
+script = ExtResource("2_mhnvy")
+menuPanel = NodePath("Structure/MenuPanel")
+controlsPanel = NodePath("Structure/ControlsPanel")
+
+[node name="Structure" type="VBoxContainer" parent="." unique_id=73400658]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="MenuPanel" parent="Structure" unique_id=889298836 instance=ExtResource("3_mhnvy")]
+layout_mode = 2
+
+[node name="ControlsPanel" parent="Structure" unique_id=1969134350 instance=ExtResource("4_mhnvy")]
+layout_mode = 2
