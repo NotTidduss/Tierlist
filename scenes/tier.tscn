@@ -20,7 +20,6 @@ thickness = 3
 
 [node name="Tier" type="HBoxContainer" unique_id=1352867815 node_paths=PackedStringArray("rankHandle", "rankColorPicker", "rankBackground", "rankText", "tierableContainer")]
 custom_minimum_size = Vector2(0, 104)
-custom_maximum_size = Vector2(-1, 104)
 theme_override_constants/separation = 0
 script = ExtResource("1_ybpj3")
 rankHandle = NodePath("TierRank/HBoxContainer/Handle")
@@ -107,10 +106,9 @@ theme_override_styles/separator = SubResource("StyleBoxLine_tds3f")
 [node name="TierableContainer" type="GridContainer" parent="TierContent/Lane/VBoxContainer" unique_id=1840547677]
 z_index = 3
 custom_minimum_size = Vector2(0, 96)
-custom_maximum_size = Vector2(-1, 96)
 layout_mode = 2
 size_flags_vertical = 3
-columns = 9
+columns = 10
 script = ExtResource("2_40r0t")
 
 [node name="HSeparatorBottom" type="HSeparator" parent="TierContent/Lane/VBoxContainer" unique_id=101126518]
