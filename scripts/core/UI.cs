@@ -55,7 +55,7 @@ public partial class UI : Control
 
     public void GrabTier(Tier tier)
     {
-        if (tier == null || Tree.GrabbedTier.Data != null) return;
+        if (tier == null || Tree.GrabbedTier.Visible) return;
 
         Tree.GrabbedTier.Init(tier.Data, tier.Parent);
         Tree.GrabbedTier.GlobalPosition = GetGlobalMousePosition() + grabOffset;

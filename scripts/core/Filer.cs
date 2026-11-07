@@ -37,7 +37,7 @@ public partial class Filer : FileDialog
     }
 
     private void SaveFull(string path) => Save(Tree.Tabs.Data, path);
-    private void SaveTierlist(string path) => Save(Tree.Tierlist.Data, path);
+    private void SaveTierlist(string path) => Save(Tree.Tabs.ActiveTierlistPanel.Data, path);
     private void SaveTierable(string path) => Save(Tree.UI.SelectedData, path);
     private void Save<T>(T data, string path)
     {
@@ -52,7 +52,7 @@ public partial class Filer : FileDialog
         file.StoreString(json);
     }
     private void LoadFull(string path) => Tree.Tabs.Build(Load<TierlistData[]>(path));
-    private void LoadTierlist(string path) => Tree.Tierlist.Data = Load<TierData[]>(path);
+    private void LoadTierlist(string path) => Tree.Tabs.ActiveTierlistPanel.Data = Load<TierlistData>(path);
     private void LoadTierable(string path) => Tree.TierlistPool.AddTierable(Load<TierableData>(path));
     private T Load<T>(string path)
     {

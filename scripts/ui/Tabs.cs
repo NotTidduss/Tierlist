@@ -98,13 +98,7 @@ public partial class Tabs : TabContainer
     }
     public void OnVisibilityChanged_AllTab()
     {
-        if (allTab.Visible)
-        {
-            foreach (TierlistPanel tierlistPanel in TierlistNodes.Cast<TierlistPanel>())
-                tierlistPanel.tierlist.Validate();
-
-            allTab.Set();
-        }
+        if (allTab.Visible) allTab.Set();
         else allTab.Clear();
     }
 

@@ -11,7 +11,7 @@ public partial class TierableContainer : GridContainer
             .Select(tierable => tierable.data)];
         set
         {
-            foreach (Node node in GetChildren()) node.QueueFree();
+            foreach (Node node in GetChildren()) { RemoveChild(node); node.QueueFree(); }
             foreach (TierableData tierable in value) AddTierable(tierable);
         }
     }

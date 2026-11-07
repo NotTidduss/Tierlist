@@ -15,13 +15,11 @@ public partial class Tierlist : VBoxContainer
     public void ShowAll() { foreach (TierContainer tc in Tiers) tc.Visible = true; }
     public void ShowNonEmpty() { foreach (TierContainer tc in Tiers) tc.Visible = tc.Tier != null; }
 
-    public void Validate() { foreach (TierContainer tc in Tiers) tc.Tier?.Validate(); }
     public TierData[] CleanupTierlist()
     {
-        Validate();
-        TierData[] validatedData = [.. Data];
+        TierData[] dataBackup = [.. Data];
         Clean();
-        return validatedData;
+        return dataBackup;
     }
     public void Rebuild()
     {

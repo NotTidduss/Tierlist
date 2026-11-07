@@ -125,5 +125,4 @@ theme_override_styles/separator = SubResource("StyleBoxLine_tds3f")
 [connection signal="popup_closed" from="TierRank/HBoxContainer/ColorPicker" to="." method="OnPopupClosed_ColorPicker"]
 [connection signal="gui_input" from="TierRank/HBoxContainer/PanelContainer/RankText" to="." method="OnGuiInput_RankText"]
 [connection signal="mouse_exited" from="TierRank/HBoxContainer/PanelContainer/RankText" to="." method="OnMouseExited_RankText"]
-[connection signal="text_changed" from="TierRank/HBoxContainer/PanelContainer/RankText" to="." method="OnTextChanged_RankText"]
 [connection signal="gui_input" from="TierContent/Lane/VBoxContainer/TierableContainer" to="TierContent/Lane/VBoxContainer/TierableContainer" method="OnGuiInput_TierableContainer"]
